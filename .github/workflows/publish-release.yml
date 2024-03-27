@@ -33,3 +33,7 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  docs:
+    uses: ./.github/workflows/_docs.yml
+    needs: [tests]

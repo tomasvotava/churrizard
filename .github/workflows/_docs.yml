@@ -1,10 +1,6 @@
-name: Test package
+name: Build JSDoc
 
 on:
-  push:
-    branches:
-      - master
-  pull_request:
   workflow_call:
 
 jobs:
@@ -22,10 +18,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm clean-install
-      - run: npm run lint
-      - run: npm test
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+      # This job will run after a successful eslint, so any errors are rather errors in jsdoc and should be ignored
+      - run: npm run docs || true
+      - name: Upload exported docs as artifacts
+        uses: actions/upload-artifact@v4
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          slug: tomasvotava/churrizard
+          name: docs
+          path: out/
