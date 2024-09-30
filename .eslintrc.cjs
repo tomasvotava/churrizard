@@ -4,8 +4,12 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ["eslint:recommended", "plugin:prettier/recommended"],
-  plugins: ["prettier"],
+  extends: [
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "plugin:jsdoc/recommended",
+  ],
+  plugins: ["prettier", "jsdoc"],
 
   overrides: [
     {
@@ -17,6 +21,12 @@ module.exports = {
         sourceType: "script",
       },
     },
+    {
+      files: ["test/**"],
+      plugins: ["jest"],
+      extends: ["plugin:jest/recommended"],
+      rules: { "jest/prefer-expect-assertions": "off" },
+    },
   ],
   parserOptions: {
     ecmaVersion: "latest",
@@ -24,5 +34,6 @@ module.exports = {
   },
   rules: {
     "prettier/prettier": "error",
+    "valid-jsdoc": "off",
   },
 };

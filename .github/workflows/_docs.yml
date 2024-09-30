@@ -1,0 +1,27 @@
+name: Build JSDoc
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm clean-install
+      # This job will run after a successful eslint, so any errors are rather errors in jsdoc and should be ignored
+      - run: npm run docs || true
+      - name: Upload exported docs as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs
+          path: out/

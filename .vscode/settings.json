@@ -1,0 +1,7 @@
+{
+  // "coverage-gutters.coverageBaseDir": "coverage",
+  // "coverage-gutters.showGutterCoverage": true,
+  "liveServer.settings.root": "/out",
+  "jest.jestCommandLine": "/home/rayt/repos/personal/churrizard/node_modules/.bin/jest",
+  "jest.runMode": "on-demand"
+}
