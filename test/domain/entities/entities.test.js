@@ -5,7 +5,7 @@ import {
   Category,
   Product,
   Post,
-} from "../../src/domain/entities/entities";
+} from "../../../src/domain/entities/entities";
 
 import {
   user,

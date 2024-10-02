@@ -2,7 +2,7 @@ import {
   Product,
   ProductVariant,
   ProductProperties,
-} from "../../src/domain/entities/entities";
+} from "../../../src/domain/entities/entities";
 
 import {
   product,

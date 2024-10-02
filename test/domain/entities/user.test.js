@@ -1,4 +1,4 @@
-import { User, Address } from "../../src/domain/entities/entities";
+import { User, Address } from "../../../src/domain/entities/entities";
 
 import { user, addressA } from "./testdata";
 

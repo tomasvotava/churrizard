@@ -8,7 +8,7 @@ import {
   ProductVariant,
   ProductProperties,
   Post,
-} from "../../src/domain/entities/entities";
+} from "../../../src/domain/entities/entities";
 
 export const addressA = new Address({
   firstName: "John",

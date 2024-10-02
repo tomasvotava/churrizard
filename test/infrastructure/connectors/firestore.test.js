@@ -20,7 +20,7 @@ afterAll(stopTestEnvironment, EMULATORS_STOP_TIMEOUT);
 
 describe("firestore module", () => {
   test("exports Churrizard class.", () => {
-    const churrizardModule = require("../src/churrizard");
+    const churrizardModule = require("../../../src/churrizard");
     expect(churrizardModule).toBeTruthy();
     expect(churrizardModule.Churrizard).toBeDefined();
     expect(churrizardModule.Churrizard).toEqual(expect.any(Function));
