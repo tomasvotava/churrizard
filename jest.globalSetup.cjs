@@ -25,8 +25,8 @@ module.exports = async () => {
     );
     emulatorHub = { host: "localhost", port: 4400 };
   } else {
-    const emulatorUrl = new URL(process.env.FIREBASE_EMULATOR_HUB);
-    emulatorHub = { host: emulatorUrl.hostname, port: emulatorUrl.port };
+    const [host, port] = process.env.FIREBASE_EMULATOR_HUB.split(":");
+    emulatorHub = { host, port };
   }
   testEmulatorHub(emulatorHub);
   console.log(
