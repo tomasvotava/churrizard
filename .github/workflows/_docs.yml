@@ -6,17 +6,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 20.x
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20.x
+      - uses: actions/cache@v4
+        with:
+          key: ${{runner.os}}-npm-20.x-${{hashFiles('package-lock.json')}}
+          path: ~/.npm
       - run: npm clean-install
       # This job will run after a successful eslint, so any errors are rather errors in jsdoc and should be ignored
       - run: npm run docs || true
