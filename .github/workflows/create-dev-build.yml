@@ -24,9 +24,9 @@ jobs:
       - name: Set dev build tag
         env:
           NEXT_SEMVER: ${{needs.get_next_semver.outputs.semver}}
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: |
           BUILD_TAG=${NEXT_SEMVER}-dev.$(date +'%s')
           echo "Creating build with tag ${BUILD_TAG}"
           sed 's/"version": ".*"/"version": "'"${BUILD_TAG}"'"/' -i package.json
+          echo "//npm.pkg.github.com/:_authToken=${{secrets.GITHUB_TOKEN}}" > .npmrc
           npm publish
