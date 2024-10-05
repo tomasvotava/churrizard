@@ -4,6 +4,9 @@
   "description": "Firebase-based ecommerce SDK node module.",
   "type": "module",
   "main": "churrizard/churrizard.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "lint": "eslint .",
     "format": "prettier --write .",
