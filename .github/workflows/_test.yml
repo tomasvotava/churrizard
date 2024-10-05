@@ -5,6 +5,7 @@ on:
 
 jobs:
   test:
+    name: Test (node ${{matrix.node-version}})
     runs-on: ubuntu-latest
     strategy:
       matrix:

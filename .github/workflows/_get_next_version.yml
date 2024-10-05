@@ -8,6 +8,7 @@ on:
 
 jobs:
   get-next-semver:
+    name: Get next semver
     runs-on: ubuntu-latest
     outputs:
       next-semver: ${{steps.semver.outputs.semver}}

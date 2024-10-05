@@ -7,4 +7,5 @@ on:
 
 jobs:
   test:
+    name: Validate Pull Request
     uses: ./.github/workflows/_test.yml
