@@ -14,6 +14,10 @@
     "fix": "eslint --fix .",
     "docs": "jsdoc -c jsdoc.conf.json -r src"
   },
+  "engines": {
+    "node": ">=18.0.0 <21"
+  },
+  "engineStrict": true,
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/tomasvotava/churrizard.git"
