@@ -18,10 +18,8 @@ const config = {
   coverageDirectory: "coverage",
 
   // A path to a module which exports an async function that is triggered once before all test suites
-  globalSetup: "./jest.globalSetup.cjs",
 
   // A path to a module which exports an async function that is triggered once after all test suites
-  globalTeardown: "./jest.globalTeardown.cjs",
 };
 
 export default config;

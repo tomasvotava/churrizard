@@ -1,3 +1,7 @@
+/**
+ * @jest-environment ./test/firebase-environment.cjs
+ */
+
 import {
   FirestoreConnector,
   FirestoreConnectorConfig,

@@ -12,8 +12,7 @@
     "format": "prettier --write .",
     "test": "jest",
     "fix": "eslint --fix .",
-    "docs": "jsdoc -c jsdoc.conf.json -r src",
-    "bump": "npx cz"
+    "docs": "jsdoc -c jsdoc.conf.json -r src"
   },
   "repository": {
     "type": "git",

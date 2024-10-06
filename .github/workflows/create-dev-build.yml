@@ -2,7 +2,6 @@ name: Create development build
 
 on:
   workflow_dispatch:
-  pull_request:
 
 jobs:
   get_next_semver:
