@@ -3,12 +3,14 @@
  * @module connectors
  */
 
-import { getApp } from "firebase/app";
+import { getApp, getApps, initializeApp } from "firebase/app";
 import { getFirestore, collection, doc } from "firebase/firestore";
 
 /**
  * @typedef {object} FirestoreConnectorOptions
- * @property {import('firebase/app').FirebaseApp?} app Firebase app (if not provided, will use the default app)
+ * @property {import('firebase/app').FirebaseApp?} app Firebase app (if not provided, will try to use the default
+ * app or initialize a new one using passed firebaseOptions)
+ * @property {import('firebase/app').FirebaseOptions?} firebaseOptions Options passed to a new firebase app
  */
 
 /**
@@ -22,7 +24,8 @@ export class FirestoreConnectorConfig {
   constructor(options) {
     options = options || {};
     if (!options.app) {
-      options.app = getApp();
+      if (getApps().length !== 0) options.app = getApp();
+      else options.app = initializeApp(options.firebaseOptions);
     }
     this.options = options;
   }

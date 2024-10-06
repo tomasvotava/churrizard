@@ -4,7 +4,7 @@ import {
   OrderStatus,
   Product,
   ProductVariant,
-} from "../../src/domain/entities/entities";
+} from "../../../src/domain/entities/entities";
 
 import {
   order,

@@ -35,5 +35,6 @@ module.exports = {
   rules: {
     "prettier/prettier": "error",
     "valid-jsdoc": "off",
+    "jsdoc/check-tag-names": ["error", { definedTags: ["jest-environment"] }],
   },
 };

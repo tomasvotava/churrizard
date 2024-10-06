@@ -1,0 +1,47 @@
+name: Get next semver
+
+on:
+  workflow_call:
+    outputs:
+      semver:
+        value: ${{jobs.get-next-semver.outputs.next-semver}}
+
+jobs:
+  get-next-semver:
+    name: Get next semver
+    runs-on: ubuntu-latest
+    outputs:
+      next-semver: ${{steps.semver.outputs.semver}}
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+      - name: Get next semver
+        id: semver
+        run: |
+          INITIAL_COMMIT=$(git rev-list --max-parents=0 HEAD)
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo '0.0.0')
+
+          echo "Last semver tag: ${LAST_TAG}"
+
+          if [ ${LAST_TAG} = "0.0.0" ]; then
+            REFERENCE_COMMIT=${INITIAL_COMMIT}
+          else
+            REFERENCE_COMMIT=${LAST_TAG}
+          fi
+
+          COMMITS=$(git log ${REFERENCE_COMMIT}..HEAD)
+
+          if echo ${COMMITS} | grep -q -e '!:' -e "BREAKING CHANGE:"; then
+            VERSION_TYPE="major"
+          elif echo ${COMMITS} | grep -q -e 'feat:' -e 'feat(.*):'; then
+            VERSION_TYPE="minor"
+          else
+            VERSION_TYPE="patch"
+          fi
+          NEXT_SEMVER=$(npx -y semver ${LAST_TAG} -i ${VERSION_TYPE})
+          echo "semver=${NEXT_SEMVER}" >> "$GITHUB_OUTPUT"
+          echo "Next semver tag: ${NEXT_SEMVER}"

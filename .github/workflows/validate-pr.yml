@@ -1,0 +1,11 @@
+name: Validate pull request
+
+on:
+  pull_request:
+    branches-ignore:
+      - release/*
+
+jobs:
+  test:
+    name: Validate Pull Request
+    uses: ./.github/workflows/_test.yml

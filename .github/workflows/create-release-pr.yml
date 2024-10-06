@@ -1,0 +1,19 @@
+name: Create release PR
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  tests:
+    name: Test package
+    uses: ./.github/workflows/_test.yml
+
+  create-release-branch:
+    name: Create release branch
+    runs-on: ubuntu-latest

@@ -1,0 +1,9 @@
+*.log
+logs/
+.github/
+.vscode/
+coverage/
+node_modules/
+out/
+firebase.json
+.firebaserc
