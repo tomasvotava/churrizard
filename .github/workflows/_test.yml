@@ -37,6 +37,7 @@ jobs:
         uses: codecov/codecov-action@v4
         env:
           NODE_VERSION: ${{matrix.node-version}}
+          CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: tomasvotava/churrizard
